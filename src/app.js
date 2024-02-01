@@ -6,6 +6,11 @@ let trophiesWon = 27;
 
 //Write your function here
 
+function createManager(managerName,managerAge,currentTeam,trophiesWon){
+  var details = [managerName,managerAge,currentTeam,trophiesWon]
+  return details
+}
+
 // Don't edit the following code
 try {
   var manager = createManager(
@@ -22,18 +27,20 @@ try {
 var formation = [4, 4, 3];
 
 //write your function here
-function createFormation(formation){
+function createFormation(formation) {
   if(formation.length===0){
     return null
   }
   else{
-    return{
-      denfender : formation[0],
-      midfield : formation[1]
-      forward : formation[2]
+    return {
+      defender: formation[0],
+      midfield: formation[1],
+      forward: formation[2],
     }
-  }
 }
+  
+}
+
 // Dont edit the following code
 
 try {
@@ -43,48 +50,72 @@ try {
 }
 
 //Progression 3 - Filter players that debuted in ___ year
-function Filterbd(year){
-  return players.Filter((player)=>player.debut==year)
+
+function filterByDebut(year) {
+  return players.filter((player) => player.debut == year)
+  
 }
+
 //Progression 4 - Filter players that play at the position _______
-function Filterbp(position){
-  return player.Filter((player)=> player.position == position)
+
+function filterByPosition(position){
+  return players.filter((player) => player.position == position )
 }
+
 //Progression 5 - Filter players that have won ______ award
-function Filterba(award){
-  return player.filter((playeraward) =>{
-    return playeraward.award.some((awards)=>awards.name == award)
+
+function filterByAward(awardName){
+  return players.filter((playerAward) => {
+    return playerAward.awards.some((awarded) => awarded.name == awardName)
   })
 }
+
+
+
 //Progression 6 - Filter players that won ______ award ____ times
-function filterbat(award,nooftime){
-  return players.filter((playerat)=>{
-    let awards = playerat.awards.filter((times)=>times.name==awardname)
-    return awards.length === nooftime
+
+function filterByAwardxTimes(awardName, noOfTimes){
+  return players.filter((playerAwardTimes) => {
+    let awards = playerAwardTimes.awards.filter((times) => times.name == awardName)
+    return awards.length === noOfTimes
   })
+
 }
+
 //Progression 7 - Filter players that won ______ award and belong to ______ country
-function filterbac(awardn,country){
-  return players.Filter((playerac)=>{
-    let awardc = playerac.awards.some((awardc)=>awardc.name == awardname)
-    return awardc && playerac.country === country
+
+function filterByAwardxCountry(awardName, country){
+  return players.filter((playerAwardCountry) => {
+    let awardCountry = playerAwardCountry.awards.some((awardCountry) => awardCountry.name == awardName)
+    return awardCountry && playerAwardCountry.country === country
   })
 }
+
 //Progression 8 - Filter players that won atleast ______ awards, belong to ______ team and are younger than ____
-function filterbnoata(noofawards,team,age){
-  return players.filter((playeraa)=>{
-    var ans = playeraa.awards.length >= noofawards && playeraa.team === team && playeraa.age <= age
+
+function filterByNoOfAwardsxTeamxAge(noOfAwards, team, age){
+  return players.filter((playerAwardAge) => {
+    var ans = playerAwardAge.awards.length >= noOfAwards && playerAwardAge.team === team && playerAwardAge.age <= age
     return ans
   })
 }
+
+
+
+
 //Progression 9 - Sort players in descending order of their age
+
 function sortByAge(){
   return players.age.sort(x,y) = y.age - x.age
 }
+
+
 //Progression 10 - Sort players beloging to _____ team in descending order of awards won
+
 function FilterByTeamxSortByNoOfAwards(){
   return players.awards.sort(x,y) = y.awards - x.awards
 }
+
 //Challenge 1 - Sort players that have won _______ award _____ times and belong to _______ country in alphabetical order of their names
 
 function SortByNamexAwardxTimes(awardName, noOfTimes, country){
@@ -94,7 +125,6 @@ function SortByNamexAwardxTimes(awardName, noOfTimes, country){
   })
   return output;
 }
-
 
 //Challenge 2 - Sort players that are older than _____ years in alphabetical order
 //Sort the awards won by them in reverse chronological order
